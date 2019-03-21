@@ -1,0 +1,33 @@
+<div class="container">
+  <a class="btn btn-success float-right" routerLink="/supply/new" style="width: 38px;">+</a>
+  <h2>Supplies</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Name</th>
+        <th>Unit Price</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let supply of supplies | async">
+        <td>{{ supply.date }}</td>
+        <td>{{ supply.name }}</td>
+        <td>{{ supply.price/supply.quantity }}</td>
+        <td>
+          <a class="btn btn-info" title="edit supply"
+                  routerLink="/supply/{{supply.name}}">
+            <img src="assets/img/pen-solid.svg" alt="edit" style="width: 12px; vertical-align: unset;">
+          </a>
+        </td><td>
+          <button class="btn btn-danger" title="delete supply" style="width: 38px;"
+                    (click)="delete(supply)">
+            -
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

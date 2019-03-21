@@ -1,0 +1,35 @@
+<div class="container">
+  <a class="btn btn-success float-right" routerLink="/product/new" style="width: 38px;">+</a>
+  <h2>Products</h2>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Code</th>
+      <th>Name</th>
+      <th>Cost</th>
+      <th>Price</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product of products | async">
+      <td>{{ product.code }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ getCost(product) }}</td>
+      <td>{{ getCost(product) * priceFactor }}</td>
+      <td>
+        <a class="btn btn-info" title="edit product"
+           routerLink="/product/{{product.name}}">
+          <img src="assets/img/pen-solid.svg" alt="edit" style="width: 12px; vertical-align: unset;">
+        </a>
+      </td><td>
+      <button class="btn btn-danger" title="delete product" style="width: 38px;"
+              (click)="delete(product)">
+        -
+      </button>
+    </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
